@@ -1,0 +1,22 @@
+[Unit]
+Description=Whisper.cpp STT server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=whisper
+Group=whisper
+SupplementaryGroups=render
+WorkingDirectory=/var/lib/whisper
+ExecStart=/opt/whisper.cpp/build/bin/whisper-server --model /var/lib/whisper/models/ggml-small.bin --host 0.0.0.0 --port 8080 --inference-path /v1/audio/transcriptions --convert --tmp-dir /var/lib/whisper/tmp --language auto --threads 6 --beam-size 5 --no-timestamps --prompt "Technical bilingual dictation in English and Brazilian Portuguese. Common terms: Git status, GitHub, OMP, ompweb, Proxmox LXC, Debian Linux, TypeScript API, JavaScript, Python, Rust, JSON, YAML, SSH, HTTPS, systemd, Docker container, Kubernetes, PostgreSQL, SQLite, regex, CLI, SDK, HTTP, TCP/IP. Transcrição técnica bilíngue em português brasileiro e inglês."
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ReadWritePaths=/var/lib/whisper/tmp
+
+[Install]
+WantedBy=multi-user.target

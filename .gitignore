@@ -1,0 +1,15 @@
+# Models and private benchmark recordings
+*.bin
+*.wav
+*.webm
+*.m4a
+*.mp3
+*.mp4
+*.ogg
+
+# Generated benchmark output
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
