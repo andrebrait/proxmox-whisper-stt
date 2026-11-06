@@ -5,6 +5,7 @@ This repository version-controls and backs up the deployment scripts, configurat
 ## Working rules
 
 - Commit directly to `main` and push to `origin/main`. Pull requests and multiple branches are, in general, not necessary or desired.
+- Always commit and push a change once it is finished. Never leave a finished change uncommitted or unpushed in a local checkout or worktree: nobody else knows it exists, and it is lost when that machine goes down.
 - Work in the primary checkout; worktrees are generally neither necessary nor desirable in this repository. Use one only when editing in place risks breaking a live setup, for example when the file being changed is the same one that running software auto-reloads its settings from: make the change in a different location and copy only the final result to its destination, preserving the original file's inode when that works better for the software involved. Work from a detached `HEAD`, push the commits straight to `origin/main`, and remove the worktree when done. Do not push other branches.
 - This worktree stance knowingly conflicts with the user-level `AGENTS.md`, which likely makes worktrees (and a branch per worktree) mandatory in every repository. The conflict is known: in this repository, this file's stance on worktrees takes precedence.
 - Changes need no pull-request review. A small adversarial review of each committed change is enough, and none is needed when the user has tested and attested the change.
